@@ -57,6 +57,7 @@ cc_binary {
     relative_install_path: "hw",
 
     init_rc: ["samsung.hardware.media.c2@1.2-omx-service.rc"],
+    vintf_fragments: ["samsung.hardware.media.c2@1.2-omx-service.xml"],
 
     defaults: ["libcodec2-hidl-defaults@1.2"],
     srcs: [
