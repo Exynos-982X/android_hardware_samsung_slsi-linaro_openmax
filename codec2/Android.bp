@@ -33,7 +33,7 @@ soong_namespace {
 }
 
 package {
-    default_applicable_licenses: ["hardware_samsung_slsi-linaro_exynos_c2service_license"],
+    default_applicable_licenses: ["hardware_samsung_slsi-linaro_openmax_codec2_license"],
 
     default_visibility: [ "//visibility:private" ],
 }
@@ -41,7 +41,7 @@ package {
 // Added automatically by a large-scale-change
 // See: http://go/android-license-faq
 license {
-    name: "hardware_samsung_slsi-linaro_exynos_c2service_license",
+    name: "hardware_samsung_slsi-linaro_openmax_codec2_license",
     visibility: [":__subpackages__"],
     license_kinds: [
         "SPDX-license-identifier-Apache-2.0",
@@ -52,13 +52,13 @@ license {
 }
 
 cc_binary {
-    name: "samsung.hardware.media.c2@1.1-default-service",
+    name: "samsung.hardware.media.c2@1.2-omx-service",
     vendor: true,
     relative_install_path: "hw",
 
-    init_rc: ["samsung.hardware.media.c2@1.1-default-service.rc"],
+    init_rc: ["samsung.hardware.media.c2@1.2-omx-service.rc"],
 
-    defaults: ["libcodec2-hidl-defaults"],
+    defaults: ["libcodec2-hidl-defaults@1.2"],
     srcs: [
         "vendor.cpp",
         "ExynosIONUtils.cpp",
@@ -71,7 +71,7 @@ cc_binary {
         "libion",
         "libion_exynos",
     ],
-    required: ["samsung.hardware.media.c2@1.1-default-seccomp-policy"],
+    required: ["samsung.hardware.media.c2@1.2-omx-seccomp-policy"],
 }
 
 // seccomp policy file.
@@ -81,23 +81,23 @@ cc_binary {
 // Files in the "seccomp_policy" subdirectory are only provided as examples.
 // They may not work on some devices and/or architectures without modification.
 prebuilt_etc {
-    name: "samsung.hardware.media.c2@1.1-default-seccomp-policy",
+    name: "samsung.hardware.media.c2@1.2-omx-seccomp-policy",
     vendor: true,
     sub_dir: "seccomp_policy",
 
     // If a specific architecture is targeted, multiple choices are not needed.
     arch: {
         arm: {
-            src: "seccomp_policy/android.hardware.media.c2@1.1-default-arm.policy",
+            src: "seccomp_policy/android.hardware.media.c2@1.2-omx-arm.policy",
         },
         arm64: {
-            src: "seccomp_policy/android.hardware.media.c2@1.1-default-arm64.policy",
+            src: "seccomp_policy/android.hardware.media.c2@1.2-omx-arm64.policy",
         },
         x86: {
-            src: "seccomp_policy/android.hardware.media.c2@1.1-default-x86.policy",
+            src: "seccomp_policy/android.hardware.media.c2@1.2-omx-x86.policy",
         },
         x86_64: {
-            src: "seccomp_policy/android.hardware.media.c2@1.1-default-x86_64.policy",
+            src: "seccomp_policy/android.hardware.media.c2@1.2-omx-x86_64.policy",
         },
     },
 

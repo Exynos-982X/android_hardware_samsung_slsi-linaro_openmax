@@ -15,12 +15,12 @@
  */
 
 //#define LOG_NDEBUG 0
-#define LOG_TAG "samsung.hardware.media.c2@1.1-service"
+#define LOG_TAG "samsung.hardware.media.c2@1.2-omx-service"
 
 #include <fcntl.h>
 #include <android-base/logging.h>
 #include <binder/ProcessState.h>
-#include <codec2/hidl/1.1/ComponentStore.h>
+#include <codec2/hidl/1.2/ComponentStore.h>
 #include <hidl/HidlTransportSupport.h>
 #include <minijail.h>
 
@@ -31,16 +31,16 @@
 #include "ExynosIONUtils.h"
 
 // This is the absolute on-device path of the prebuild_etc module
-// "android.hardware.media.c2@1.1-default-seccomp_policy" in Android.bp.
+// "android.hardware.media.c2@1.2-omx-seccomp_policy" in Android.bp.
 static constexpr char kBaseSeccompPolicyPath[] =
         "/vendor/etc/seccomp_policy/"
-        "samsung.hardware.media.c2@1.1-default-seccomp-policy";
+        "samsung.hardware.media.c2@1.2-omx-seccomp-policy";
 
 // Additional seccomp permissions can be added in this file.
 // This file does not exist by default.
 static constexpr char kExtSeccompPolicyPath[] =
         "/vendor/etc/seccomp_policy/"
-        "samsung.hardware.media.c2@1.1-extended-seccomp-policy";
+        "samsung.hardware.media.c2@1.2-omx-extended-seccomp-policy";
 
 class StoreImpl : public C2ComponentStore {
 public:
@@ -52,7 +52,7 @@ public:
     virtual ~StoreImpl() override = default;
 
     virtual C2String getName() const override {
-        return "default";
+        return "vendor.componentStore.exynos.omx";
     }
 
     virtual c2_status_t createComponent(
@@ -159,7 +159,7 @@ private:
 
 int main(int /* argc */, char** /* argv */) {
     using namespace ::android;
-    LOG(DEBUG) << "samsung.hardware.media.c2@1.1-default-service starting...";
+    LOG(DEBUG) << "samsung.hardware.media.c2@1.2-omx-service starting...";
 
     // Set up minijail to limit system calls.
     signal(SIGPIPE, SIG_IGN);
@@ -175,7 +175,7 @@ int main(int /* argc */, char** /* argv */) {
 
     // Create IComponentStore service.
     {
-        using namespace ::android::hardware::media::c2::V1_1;
+        using namespace ::android::hardware::media::c2::V1_2;
         sp<IComponentStore> store;
 
         // TODO: Replace this with
