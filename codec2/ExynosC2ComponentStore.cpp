@@ -19,12 +19,14 @@
 
 #include "ExynosC2ComponentStore.h"
 #include "ExynosIONUtils.h"
+#include "ExynosOMXUtils.h"
 
 class ExynosC2ComponentStore : public C2ComponentStore {
 public:
     ExynosC2ComponentStore()
         : mReflectorHelper(std::make_shared<C2ReflectorHelper>()),
-          mInterface(mReflectorHelper) {
+          mInterface(mReflectorHelper),
+          mOMXUtils() {
     }
 
     virtual ~ExynosC2ComponentStore() override = default;
@@ -133,6 +135,7 @@ private:
     };
     std::shared_ptr<C2ReflectorHelper> mReflectorHelper;
     Interface mInterface;
+    android::ExynosOMXUtils mOMXUtils;
 };
 
 std::shared_ptr<C2ComponentStore> GetCodec2ExynosComponentStore() {

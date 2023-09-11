@@ -49,6 +49,7 @@ cc_binary {
         "vendor.cpp",
         "ExynosC2ComponentStore.cpp",
         "ExynosIONUtils.cpp",
+        "ExynosOMXUtils.cpp",
     ],
 
     // minijail is used to protect against unexpected system calls.
@@ -57,6 +58,7 @@ cc_binary {
         "libbinder",
         "libion",
         "libion_exynos",
+        "libstagefright_foundation",
     ],
     required: ["codec2.vendor.base-arm.policy"],
 }
