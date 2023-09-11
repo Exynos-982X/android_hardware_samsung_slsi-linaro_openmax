@@ -58,30 +58,12 @@ cc_binary {
         "libion",
         "libion_exynos",
     ],
-    required: ["samsung.hardware.media.c2@1.2-omx-seccomp-policy"],
+    required: ["codec2.vendor.base-arm.policy"],
 }
 
 prebuilt_etc {
-    name: "samsung.hardware.media.c2@1.2-omx-seccomp-policy",
+    name: "codec2.vendor.base-arm.policy",
     vendor: true,
     sub_dir: "seccomp_policy",
-
-    // If a specific architecture is targeted, multiple choices are not needed.
-    arch: {
-        arm: {
-            src: "seccomp_policy/android.hardware.media.c2@1.2-omx-arm.policy",
-        },
-        arm64: {
-            src: "seccomp_policy/android.hardware.media.c2@1.2-omx-arm64.policy",
-        },
-        x86: {
-            src: "seccomp_policy/android.hardware.media.c2@1.2-omx-x86.policy",
-        },
-        x86_64: {
-            src: "seccomp_policy/android.hardware.media.c2@1.2-omx-x86_64.policy",
-        },
-    },
-
-    // This may be removed.
-    required: ["crash_dump.policy"],
+    src: "seccomp_policy/codec2.vendor.base-arm.policy",
 }

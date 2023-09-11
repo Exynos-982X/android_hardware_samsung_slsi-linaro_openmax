@@ -32,16 +32,16 @@
 #include "ExynosC2ComponentStore.h"
 
 // This is the absolute on-device path of the prebuild_etc module
-// "android.hardware.media.c2@1.2-omx-seccomp_policy" in Android.bp.
+// "codec2.vendor.base-arm.policy" in Android.bp.
 static constexpr char kBaseSeccompPolicyPath[] =
         "/vendor/etc/seccomp_policy/"
-        "samsung.hardware.media.c2@1.2-omx-seccomp-policy";
+        "codec2.vendor.base-arm.policy";
 
 // Additional seccomp permissions can be added in this file.
 // This file does not exist by default.
 static constexpr char kExtSeccompPolicyPath[] =
         "/vendor/etc/seccomp_policy/"
-        "samsung.hardware.media.c2@1.2-omx-extended-seccomp-policy";
+        "codec2.vendor.ext-arm.policy";
 
 int main(int /* argc */, char** /* argv */) {
     using namespace ::android;
