@@ -14,21 +14,6 @@
  * limitations under the License.
  */
 
-// This is an example of an empty Codec2.0 service.
-//
-// To use this, make a copy of this whole directory and rename modules
-// accordingly. The contents of "vendor.cpp" and files in the subdirectory
-// "seccomp_policy" may also need to be modified.
-
-// Binary file for the service.
-//
-// The init_rc file contains the absolute path to this binary on the device.
-// If the name of this module is modified, the content of the init_rc file has
-// to be modified accordingly.
-//
-// The seccomp_policy file name and its content can be modified, but note that
-// vendor.cpp also needs to be updated because it needs the absolute path to the
-// seccomp policy file on the device.
 soong_namespace {
 }
 
@@ -62,6 +47,7 @@ cc_binary {
     defaults: ["libcodec2-hidl-defaults@1.2"],
     srcs: [
         "vendor.cpp",
+        "ExynosC2ComponentStore.cpp",
         "ExynosIONUtils.cpp",
     ],
 
@@ -75,12 +61,6 @@ cc_binary {
     required: ["samsung.hardware.media.c2@1.2-omx-seccomp-policy"],
 }
 
-// seccomp policy file.
-//
-// This should be modified to suit the target device and architecture.
-//
-// Files in the "seccomp_policy" subdirectory are only provided as examples.
-// They may not work on some devices and/or architectures without modification.
 prebuilt_etc {
     name: "samsung.hardware.media.c2@1.2-omx-seccomp-policy",
     vendor: true,
