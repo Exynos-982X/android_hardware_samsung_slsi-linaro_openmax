@@ -1,0 +1,11 @@
+cc_library_headers {
+    name: "libexynos_videoapi0_headers",
+    proprietary: true,
+    compile_multilib: "both",
+    export_include_dirs: [
+        "./",
+        "include",
+        "mfc_headers",
+        "osal/include",
+    ],
+}
